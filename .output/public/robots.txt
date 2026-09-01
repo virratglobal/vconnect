@@ -1,0 +1,19 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /auth
+Disallow: /dashboard*
+Disallow: /conversations*
+Disallow: /campaigns*
+Disallow: /contacts*
+Disallow: /reports*
+Disallow: /settings*
+Disallow: /templates*
+Disallow: /super-admin*
+Disallow: /api/*
+
+# Host
+Host: https://virratreach.com
+
+# Sitemap
+Sitemap: https://virratreach.com/sitemap.xml

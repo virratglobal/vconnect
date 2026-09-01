@@ -1,0 +1,3 @@
+ALTER TABLE public.message_templates
+  ADD COLUMN IF NOT EXISTS submitted_at TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS last_sync_at TIMESTAMPTZ;

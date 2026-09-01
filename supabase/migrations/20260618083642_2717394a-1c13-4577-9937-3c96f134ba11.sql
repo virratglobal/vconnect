@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX IF NOT EXISTS conversations_tenant_contact_uniq ON public.conversations(tenant_id, contact_id);

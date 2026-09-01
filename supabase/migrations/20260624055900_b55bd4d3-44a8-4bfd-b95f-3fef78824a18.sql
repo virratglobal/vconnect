@@ -1,0 +1,1 @@
+ALTER TABLE public.tenants ALTER COLUMN webhook_verify_token SET DEFAULT public.generate_webhook_verify_token();
