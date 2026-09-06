@@ -99,12 +99,12 @@ for (const envPath of ENV_SEARCH_PATHS) if (loadEnvFile(envPath)) {
 if (!envLoaded) console.warn(`[env] No .env file found. Falling back to system environment variables.`);
 var serverEntryPromise;
 async function getServerEntry() {
-	if (!serverEntryPromise) serverEntryPromise = import("./server-DfGXERk2.mjs").then((m) => m.default ?? m);
+	if (!serverEntryPromise) serverEntryPromise = import("./server-CgHyxlLp.mjs").then((m) => m.default ?? m);
 	return serverEntryPromise;
 }
 async function logErrorToDb(error, request) {
 	try {
-		const { supabaseAdmin } = await import("./client.server-Bs0W82-x.mjs").then((n) => n.t).then((n) => n.t);
+		const { supabaseAdmin } = await import("./client.server-Ck2b02Cx.mjs").then((n) => n.t).then((n) => n.t);
 		const errorStr = error instanceof Error ? `${error.message}\n${error.stack}` : String(error);
 		await supabaseAdmin.from("system_errors").insert({
 			type: "server_uncaught",

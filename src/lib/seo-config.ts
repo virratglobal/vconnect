@@ -6,16 +6,16 @@
 
 export const SEO_CONFIG = {
   /** Canonical site origin — update when domain is confirmed */
-  siteUrl: "https://convexa.virratglobal.com",
+  siteUrl: "https://vconnect.virratglobal.com",
 
   /** Brand name used across all title templates */
-  siteName: "CONVEXA",
+  siteName: "VCONNECT",
 
   /** Default Open Graph image (1200×630 recommended) */
   ogImage: "/og-image.png",
 
   /** Twitter / X account handle */
-  twitterHandle: "@convexa",
+  twitterHandle: "@vconnect",
 
   /** Default locale */
   locale: "en_IN",
@@ -24,7 +24,7 @@ export const SEO_CONFIG = {
   themeColor: "#16a34a",
 
   /** App author / publisher */
-  author: "CONVEXA",
+  author: "VCONNECT",
 
   /** Default robots directive */
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",

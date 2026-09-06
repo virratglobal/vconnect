@@ -17,9 +17,9 @@ export const Route = createFileRoute("/auth")({
     if (data.session) throw redirect({ to: "/dashboard" });
   },
   head: () => {
-    const title = "Sign In | CONVEXA";
+    const title = "Sign In | VCONNECT";
     const description =
-      "Sign in or sign up to your CONVEXA workspace to manage WhatsApp campaigns, broadcasts, and AI chatbots.";
+      "Sign in or sign up to your VCONNECT workspace to manage WhatsApp campaigns, broadcasts, and AI chatbots.";
     const url = `${SEO_CONFIG.siteUrl}/auth`;
     const ogImage = `${SEO_CONFIG.siteUrl}${SEO_CONFIG.ogImage}`;
 
@@ -138,7 +138,7 @@ function AuthPage() {
     <div className="min-h-screen grid md:grid-cols-2 bg-background">
       <SEO
         title={mode === "forgot" ? "Reset Password" : mode === "signup" ? "Create Account" : "Sign In"}
-        description="Sign in or sign up to your CONVEXA workspace to manage WhatsApp campaigns, broadcasts, and AI chatbots."
+        description="Sign in or sign up to your VCONNECT workspace to manage WhatsApp campaigns, broadcasts, and AI chatbots."
         canonical="/auth"
         robots="noindex, nofollow"
       />
@@ -147,7 +147,7 @@ function AuthPage() {
         <div className="flex items-center gap-2">
           <img
             src="/logo.png"
-            alt="CONVEXA"
+            alt="VCONNECT"
             className="h-14 w-auto object-contain brightness-0 invert"
           />
         </div>

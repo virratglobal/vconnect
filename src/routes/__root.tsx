@@ -111,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `CONVEXA - Professional WhatsApp CRM` },
+      { title: `VCONNECT - Professional WhatsApp CRM` },
       {
         name: "description",
         content: "Enterprise WhatsApp CRM platform for campaigns, reports, and contact management.",
@@ -154,23 +154,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "icon",
         type: "image/x-icon",
-        href: "/favicon.ico?v=convexa",
+        href: "/favicon.ico?v=vconnect",
       },
       {
         rel: "shortcut icon",
         type: "image/x-icon",
-        href: "/favicon.ico?v=convexa",
+        href: "/favicon.ico?v=vconnect",
       },
       {
         rel: "apple-touch-icon",
         sizes: "180x180",
-        href: "/apple-touch-icon.png?v=convexa",
+        href: "/apple-touch-icon.png?v=vconnect",
       },
       {
         rel: "icon",
         type: "image/png",
         sizes: "32x32",
-        href: "/favicon.png?v=convexa",
+        href: "/favicon.png?v=vconnect",
       },
     ],
   }),

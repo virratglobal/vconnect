@@ -124,7 +124,7 @@ export function OnboardingDialog() {
             <MessageSquare className="size-6" />
           </div>
           <span className="text-2xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
-            CONVEXA
+            VCONNECT
           </span>
         </div>
 
@@ -132,7 +132,7 @@ export function OnboardingDialog() {
         <Card className="p-8 md:p-12 shadow-xl border border-border/50 bg-card/80 backdrop-blur-md rounded-3xl space-y-6">
           <div className="space-y-3">
             <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-              Welcome to CONVEXA
+              Welcome to VCONNECT
             </h1>
             <p className="text-muted-foreground text-base md:text-lg max-w-md mx-auto">
               You're not part of any organization yet. Create your first organization to start using
@@ -162,7 +162,7 @@ export function OnboardingDialog() {
 
           <div className="flex justify-center items-center gap-6 pt-6 text-sm border-t border-border/50">
             <a
-              href="https://convexa.virratglobal.com"
+              href="https://vconnect.virratglobal.com"
               target="_blank"
               rel="noreferrer"
               className="text-muted-foreground hover:text-foreground flex items-center gap-1 transition"

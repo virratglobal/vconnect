@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { SEO_CONFIG, pageTitle, canonicalUrl } from "@/lib/seo-config";
 
 interface SEOProps {
-  /** Page title. By default, " | CONVEXA" is appended unless preventSuffix is true. */
+  /** Page title. By default, " | VCONNECT" is appended unless preventSuffix is true. */
   title?: string;
   /** Page description. Fallback to default enterprise description. */
   description?: string;
@@ -23,7 +23,7 @@ interface SEOProps {
 }
 
 /**
- * Reusable SEO component for CONVEXA.
+ * Reusable SEO component for VCONNECT.
  * Leverages React 19's native head hoisting for title, meta, and link tags.
  * Ensures sitemap, robots, OG, and structured data standards are met.
  */

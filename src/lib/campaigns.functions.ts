@@ -501,7 +501,7 @@ export const createCampaign = createServerFn({ method: "POST" })
     if (!data.scheduledAt) {
       const origin =
         process.env.PUBLIC_BASE_URL ??
-        "https://convexa.virratglobal.com";
+        "https://vconnect.virratglobal.com";
       void fetch(`${origin}/api/public/hooks/process-campaigns`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -562,7 +562,7 @@ export const resumeCampaign = createServerFn({ method: "POST" })
 
     const origin =
       process.env.PUBLIC_BASE_URL ??
-      "https://convexa.virratglobal.com";
+      "https://vconnect.virratglobal.com";
     void fetch(`${origin}/api/public/hooks/process-campaigns`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

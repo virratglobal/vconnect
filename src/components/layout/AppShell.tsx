@@ -173,14 +173,14 @@ function SidebarContent({ onNavigate }: { onNavigate: () => void }) {
           {branding?.company_logo ? (
             <img
                src={branding.company_logo}
-               alt={branding.company_name || "CONVEXA"}
+               alt={branding.company_name || "VCONNECT"}
                className="h-11 max-w-[180px] object-contain"
                fetchPriority="high"
              />
            ) : (
              <img
                src="/logo.png"
-               alt="CONVEXA"
+               alt="VCONNECT"
                className="h-11 max-w-[180px] object-contain"
                fetchPriority="high"
              />

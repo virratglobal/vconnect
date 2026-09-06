@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
     }
   },
   head: () => {
-    const title = "CONVEXA – AI-Powered WhatsApp CRM for Businesses";
+    const title = "VCONNECT – AI-Powered WhatsApp CRM for Businesses";
     const description =
       "Send bulk WhatsApp broadcasts, build AI chatbots, manage customer chats with a shared inbox, run voice campaigns, and automate customer engagement.";
     const url = SEO_CONFIG.siteUrl;
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/")({
         {
           name: "keywords",
           content:
-            "WhatsApp CRM, Bulk WhatsApp Sender, WhatsApp Marketing, AI Chatbot, Shared Inbox, Voice Campaigns, CONVEXA",
+            "WhatsApp CRM, Bulk WhatsApp Sender, WhatsApp Marketing, AI Chatbot, Shared Inbox, Voice Campaigns, VCONNECT",
         },
         // Open Graph
         { property: "og:title", content: title },
@@ -171,9 +171,9 @@ function LandingPage() {
     {
       id: "faq-1",
       num: "01",
-      question: "What is CONVEXA and how does it work?",
+      question: "What is VCONNECT and how does it work?",
       answer:
-        "CONVEXA is a comprehensive customer growth and engagement platform that helps businesses run bulk WhatsApp marketing campaigns, build chatbots, manage agent tasks, and handle team conversations from a single dashboard. It connects to your WhatsApp number via QR code or the official Meta Business API.",
+        "VCONNECT is a comprehensive customer growth and engagement platform that helps businesses run bulk WhatsApp marketing campaigns, build chatbots, manage agent tasks, and handle team conversations from a single dashboard. It connects to your WhatsApp number via QR code or the official Meta Business API.",
     },
     {
       id: "faq-2",
@@ -194,7 +194,7 @@ function LandingPage() {
       num: "04",
       question: "Can I broadcast messages to thousands of contacts?",
       answer:
-        "Yes. CONVEXA enables bulk broadcasting to your contact book. When using the official WhatsApp API, you can send template messages concurrently. The built-in template builder helps you get approval from Meta automatically.",
+        "Yes. VCONNECT enables bulk broadcasting to your contact book. When using the official WhatsApp API, you can send template messages concurrently. The built-in template builder helps you get approval from Meta automatically.",
     },
     {
       id: "faq-5",
@@ -228,7 +228,7 @@ function LandingPage() {
       <SEO
         title="AI-Powered WhatsApp CRM for Businesses"
         description="Send bulk WhatsApp broadcasts, build AI chatbots, manage customer chats with a shared inbox, run voice campaigns, and automate customer engagement."
-        keywords="WhatsApp CRM, bulk WhatsApp sender, WhatsApp marketing, AI chatbot, shared inbox, voice campaigns, CONVEXA"
+        keywords="WhatsApp CRM, bulk WhatsApp sender, WhatsApp marketing, AI chatbot, shared inbox, voice campaigns, VCONNECT"
         canonical="/"
       />
       {/* Sticky Header */}
@@ -237,7 +237,7 @@ function LandingPage() {
           <div className="flex items-center gap-2">
             <img
               src="/logo.png"
-              alt="CONVEXA"
+              alt="VCONNECT"
               className="h-14 w-auto object-contain"
               fetchPriority="high"
             />
@@ -459,7 +459,7 @@ function LandingPage() {
               One platform, <span className="text-[#CC1100]/70">every feature</span>
             </h2>
             <p className="max-w-2xl mx-auto text-gray-500">
-              From connecting WhatsApp to deploying AI call agents — CONVEXA gives your team
+              From connecting WhatsApp to deploying AI call agents — VCONNECT gives your team
               every tool to automate, broadcast, and grow.
             </p>
           </div>
@@ -579,7 +579,7 @@ function LandingPage() {
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Webhooks &amp; REST API</h3>
               <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                Integrate CONVEXA with any external tool using webhooks and the Meta REST API.
+                Integrate VCONNECT with any external tool using webhooks and the Meta REST API.
                 Automate routing logic, sync data, and monitor events in real time.
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -821,7 +821,7 @@ function LandingPage() {
                 Ready to grow your <br /> business?
               </h2>
               <p className="text-gray-500 max-w-xl mx-auto mb-10 text-base md:text-lg">
-                Join 50,000+ businesses already using CONVEXA to automate their WhatsApp
+                Join 50,000+ businesses already using VCONNECT to automate their WhatsApp
                 marketing and support.
               </p>
 
@@ -913,7 +913,7 @@ function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center gap-2 mb-8">
-                <img src="/logo.png" alt="CONVEXA" className="h-14 w-auto object-contain" />
+                <img src="/logo.png" alt="VCONNECT" className="h-14 w-auto object-contain" />
               </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-sm">
                 The most powerful WhatsApp marketing platform for modern businesses. Automate,
@@ -970,7 +970,7 @@ function LandingPage() {
 
           <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-xs font-medium text-gray-400">
             <p>
-              © 2026 <span className="text-[#CC1100] font-bold">CONVEXA</span> · All rights
+              © 2026 <span className="text-[#CC1100] font-bold">VCONNECT</span> · All rights
               reserved.
             </p>
             <div className="flex items-center gap-6 mt-4 md:mt-0">
