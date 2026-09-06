@@ -2,12 +2,6 @@
 -- Extends conversations table and creates conversation_messages table.
 -- Does NOT drop or alter any existing columns/constraints except making phone_number NOT NULL.
 
-ALTER TABLE public.messages 
-  ADD COLUMN IF NOT EXISTS media_url TEXT,
-  ADD COLUMN IF NOT EXISTS sent_at TIMESTAMPTZ,
-  ADD COLUMN IF NOT EXISTS delivered_at TIMESTAMPTZ,
-  ADD COLUMN IF NOT EXISTS read_at TIMESTAMPTZ;
-
 -- Extend conversations
 ALTER TABLE public.conversations
   ADD COLUMN IF NOT EXISTS phone_number TEXT,

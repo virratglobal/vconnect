@@ -4,191 +4,6 @@ import { l as require_react_dom, u as require_react } from "../@floating-ui/reac
 import { r as parseHref } from "../tanstack__history.mjs";
 import { PassThrough, Readable } from "node:stream";
 import { ReadableStream as ReadableStream$1 } from "node:stream/web";
-//#region node_modules/@tanstack/react-router/dist/esm/routerContext.js
-var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
-var routerContext = import_react.createContext(null);
-//#endregion
-//#region node_modules/@tanstack/react-router/dist/esm/useRouter.js
-/**
-* Access the current TanStack Router instance from React context.
-* Must be used within a `RouterProvider`.
-*
-* Options:
-* - `warn`: Log a warning if no router context is found (default: true).
-*
-* @returns The registered router instance.
-* @link https://tanstack.com/router/latest/docs/framework/react/api/router/useRouterHook
-*/
-function useRouter(opts) {
-	return import_react.useContext(routerContext);
-}
-//#endregion
-//#region node_modules/@tanstack/react-router/dist/esm/utils.js
-/**
-* React.use if available (React 19+), undefined otherwise.
-* Use dynamic lookup to avoid Webpack compilation errors with React 18.
-*/
-var reactUse = import_react.use;
-var useLayoutEffect = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
-/**
-* React hook to wrap `IntersectionObserver`.
-*
-* This hook will create an `IntersectionObserver` and observe the ref passed to it.
-*
-* When the intersection changes, the callback will be called with the `IntersectionObserverEntry`.
-*
-* @param ref - The ref to observe
-* @param intersectionObserverOptions - The options to pass to the IntersectionObserver
-* @param options - The options to pass to the hook
-* @param callback - The callback to call when the intersection changes
-* @returns The IntersectionObserver instance
-* @example
-* ```tsx
-* const MyComponent = () => {
-* const ref = React.useRef<HTMLDivElement>(null)
-* useIntersectionObserver(
-*  ref,
-*  (entry) => { doSomething(entry) },
-*  { rootMargin: '10px' },
-*  { disabled: false }
-* )
-* return <div ref={ref} />
-* ```
-*/
-function useIntersectionObserver(ref, callback, intersectionObserverOptions = {}, options = {}) {
-	import_react.useEffect(() => {
-		if (!ref.current || options.disabled || typeof IntersectionObserver !== "function") return;
-		const observer = new IntersectionObserver(([entry]) => {
-			callback(entry);
-		}, intersectionObserverOptions);
-		observer.observe(ref.current);
-		return () => {
-			observer.disconnect();
-		};
-	}, [
-		callback,
-		intersectionObserverOptions,
-		options.disabled,
-		ref
-	]);
-}
-/**
-* React hook to take a `React.ForwardedRef` and returns a `ref` that can be used on a DOM element.
-*
-* @param ref - The forwarded ref
-* @returns The inner ref returned by `useRef`
-* @example
-* ```tsx
-* const MyComponent = React.forwardRef((props, ref) => {
-*  const innerRef = useForwardedRef(ref)
-*  return <div ref={innerRef} />
-* })
-* ```
-*/
-function useForwardedRef(ref) {
-	const innerRef = import_react.useRef(null);
-	import_react.useImperativeHandle(ref, () => innerRef.current, []);
-	return innerRef;
-}
-//#endregion
-//#region node_modules/@tanstack/react-router/dist/esm/useNavigate.js
-/**
-* Imperative navigation hook.
-*
-* Returns a stable `navigate(options)` function to change the current location
-* programmatically. Prefer the `Link` component for user-initiated navigation,
-* and use this hook from effects, callbacks, or handlers where imperative
-* navigation is required.
-*
-* Options:
-* - `from`: Optional route base used to resolve relative `to` paths.
-*
-* @returns A function that accepts `NavigateOptions`.
-* @link https://tanstack.com/router/latest/docs/framework/react/api/router/useNavigateHook
-*/
-function useNavigate(_defaultOpts) {
-	const router = useRouter();
-	return import_react.useCallback((options) => {
-		return router.navigate({
-			...options,
-			from: options.from ?? _defaultOpts?.from
-		});
-	}, [_defaultOpts?.from, router]);
-}
-/**
-* Component that triggers a navigation when rendered. Navigation executes
-* in an effect after mount/update.
-*
-* Props are the same as `NavigateOptions` used by `navigate()`.
-*
-* @returns null
-* @link https://tanstack.com/router/latest/docs/framework/react/api/router/navigateComponent
-*/
-function Navigate(props) {
-	const router = useRouter();
-	const navigate = useNavigate();
-	const previousPropsRef = import_react.useRef(null);
-	useLayoutEffect(() => {
-		if (previousPropsRef.current !== props) {
-			navigate(props);
-			previousPropsRef.current = props;
-		}
-	}, [
-		router,
-		props,
-		navigate
-	]);
-	return null;
-}
-//#endregion
-//#region node_modules/@tanstack/react-router/dist/esm/ClientOnly.js
-var import_jsx_runtime = require_jsx_runtime();
-/**
-* Render the children only after the JS has loaded client-side. Use an optional
-* fallback component if the JS is not yet loaded.
-*
-* @example
-* Render a Chart component if JS loads, renders a simple FakeChart
-* component server-side or if there is no JS. The FakeChart can have only the
-* UI without the behavior or be a loading spinner or skeleton.
-*
-* ```tsx
-* return (
-*   <ClientOnly fallback={<FakeChart />}>
-*     <Chart />
-*   </ClientOnly>
-* )
-* ```
-*/
-function ClientOnly({ children, fallback = null }) {
-	return useHydrated() ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Fragment, { children }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Fragment, { children: fallback });
-}
-/**
-* Return a boolean indicating if the JS has been hydrated already.
-* When doing Server-Side Rendering, the result will always be false.
-* When doing Client-Side Rendering, the result will always be false on the
-* first render and true from then on. Even if a new component renders it will
-* always start with true.
-*
-* @example
-* ```tsx
-* // Disable a button that needs JS to work.
-* let hydrated = useHydrated()
-* return (
-*   <button type="button" disabled={!hydrated} onClick={doSomethingCustom}>
-*     Click me
-*   </button>
-* )
-* ```
-* @returns True if the JS has been hydrated already, false otherwise.
-*/
-function useHydrated() {
-	return import_react.useSyncExternalStore(subscribe, () => true, () => false);
-}
-function subscribe() {
-	return () => {};
-}
-//#endregion
 //#region node_modules/@tanstack/router-core/dist/esm/utils.js
 /**
 * Return the last element of an array.
@@ -1515,6 +1330,8 @@ function parseRedirect(obj) {
 }
 //#endregion
 //#region node_modules/@tanstack/router-core/dist/esm/rewrite.js
+var import_jsx_runtime = require_jsx_runtime();
+var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
 /** Compose multiple rewrite pairs into a single in/out rewrite. */
 function composeRewrites(rewrites) {
@@ -3734,6 +3551,189 @@ var BaseRootRoute = class extends BaseRoute {
 //#region node_modules/@tanstack/router-core/dist/esm/ssr/constants.js
 var GLOBAL_TSR = "$_TSR";
 var TSR_SCRIPT_BARRIER_ID = "$tsr-stream-barrier";
+//#endregion
+//#region node_modules/@tanstack/react-router/dist/esm/routerContext.js
+var routerContext = import_react.createContext(null);
+//#endregion
+//#region node_modules/@tanstack/react-router/dist/esm/useRouter.js
+/**
+* Access the current TanStack Router instance from React context.
+* Must be used within a `RouterProvider`.
+*
+* Options:
+* - `warn`: Log a warning if no router context is found (default: true).
+*
+* @returns The registered router instance.
+* @link https://tanstack.com/router/latest/docs/framework/react/api/router/useRouterHook
+*/
+function useRouter(opts) {
+	return import_react.useContext(routerContext);
+}
+//#endregion
+//#region node_modules/@tanstack/react-router/dist/esm/utils.js
+/**
+* React.use if available (React 19+), undefined otherwise.
+* Use dynamic lookup to avoid Webpack compilation errors with React 18.
+*/
+var reactUse = import_react.use;
+var useLayoutEffect = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
+/**
+* React hook to wrap `IntersectionObserver`.
+*
+* This hook will create an `IntersectionObserver` and observe the ref passed to it.
+*
+* When the intersection changes, the callback will be called with the `IntersectionObserverEntry`.
+*
+* @param ref - The ref to observe
+* @param intersectionObserverOptions - The options to pass to the IntersectionObserver
+* @param options - The options to pass to the hook
+* @param callback - The callback to call when the intersection changes
+* @returns The IntersectionObserver instance
+* @example
+* ```tsx
+* const MyComponent = () => {
+* const ref = React.useRef<HTMLDivElement>(null)
+* useIntersectionObserver(
+*  ref,
+*  (entry) => { doSomething(entry) },
+*  { rootMargin: '10px' },
+*  { disabled: false }
+* )
+* return <div ref={ref} />
+* ```
+*/
+function useIntersectionObserver(ref, callback, intersectionObserverOptions = {}, options = {}) {
+	import_react.useEffect(() => {
+		if (!ref.current || options.disabled || typeof IntersectionObserver !== "function") return;
+		const observer = new IntersectionObserver(([entry]) => {
+			callback(entry);
+		}, intersectionObserverOptions);
+		observer.observe(ref.current);
+		return () => {
+			observer.disconnect();
+		};
+	}, [
+		callback,
+		intersectionObserverOptions,
+		options.disabled,
+		ref
+	]);
+}
+/**
+* React hook to take a `React.ForwardedRef` and returns a `ref` that can be used on a DOM element.
+*
+* @param ref - The forwarded ref
+* @returns The inner ref returned by `useRef`
+* @example
+* ```tsx
+* const MyComponent = React.forwardRef((props, ref) => {
+*  const innerRef = useForwardedRef(ref)
+*  return <div ref={innerRef} />
+* })
+* ```
+*/
+function useForwardedRef(ref) {
+	const innerRef = import_react.useRef(null);
+	import_react.useImperativeHandle(ref, () => innerRef.current, []);
+	return innerRef;
+}
+//#endregion
+//#region node_modules/@tanstack/react-router/dist/esm/useNavigate.js
+/**
+* Imperative navigation hook.
+*
+* Returns a stable `navigate(options)` function to change the current location
+* programmatically. Prefer the `Link` component for user-initiated navigation,
+* and use this hook from effects, callbacks, or handlers where imperative
+* navigation is required.
+*
+* Options:
+* - `from`: Optional route base used to resolve relative `to` paths.
+*
+* @returns A function that accepts `NavigateOptions`.
+* @link https://tanstack.com/router/latest/docs/framework/react/api/router/useNavigateHook
+*/
+function useNavigate(_defaultOpts) {
+	const router = useRouter();
+	return import_react.useCallback((options) => {
+		return router.navigate({
+			...options,
+			from: options.from ?? _defaultOpts?.from
+		});
+	}, [_defaultOpts?.from, router]);
+}
+/**
+* Component that triggers a navigation when rendered. Navigation executes
+* in an effect after mount/update.
+*
+* Props are the same as `NavigateOptions` used by `navigate()`.
+*
+* @returns null
+* @link https://tanstack.com/router/latest/docs/framework/react/api/router/navigateComponent
+*/
+function Navigate(props) {
+	const router = useRouter();
+	const navigate = useNavigate();
+	const previousPropsRef = import_react.useRef(null);
+	useLayoutEffect(() => {
+		if (previousPropsRef.current !== props) {
+			navigate(props);
+			previousPropsRef.current = props;
+		}
+	}, [
+		router,
+		props,
+		navigate
+	]);
+	return null;
+}
+//#endregion
+//#region node_modules/@tanstack/react-router/dist/esm/ClientOnly.js
+/**
+* Render the children only after the JS has loaded client-side. Use an optional
+* fallback component if the JS is not yet loaded.
+*
+* @example
+* Render a Chart component if JS loads, renders a simple FakeChart
+* component server-side or if there is no JS. The FakeChart can have only the
+* UI without the behavior or be a loading spinner or skeleton.
+*
+* ```tsx
+* return (
+*   <ClientOnly fallback={<FakeChart />}>
+*     <Chart />
+*   </ClientOnly>
+* )
+* ```
+*/
+function ClientOnly({ children, fallback = null }) {
+	return useHydrated() ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Fragment, { children }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Fragment, { children: fallback });
+}
+/**
+* Return a boolean indicating if the JS has been hydrated already.
+* When doing Server-Side Rendering, the result will always be false.
+* When doing Client-Side Rendering, the result will always be false on the
+* first render and true from then on. Even if a new component renders it will
+* always start with true.
+*
+* @example
+* ```tsx
+* // Disable a button that needs JS to work.
+* let hydrated = useHydrated()
+* return (
+*   <button type="button" disabled={!hydrated} onClick={doSomethingCustom}>
+*     Click me
+*   </button>
+* )
+* ```
+* @returns True if the JS has been hydrated already, false otherwise.
+*/
+function useHydrated() {
+	return import_react.useSyncExternalStore(subscribe, () => true, () => false);
+}
+function subscribe() {
+	return () => {};
+}
 //#endregion
 //#region node_modules/@tanstack/store/dist/esm/alien.js
 var ReactiveFlags = /* @__PURE__ */ ((ReactiveFlags2) => {
@@ -14535,4 +14535,4 @@ var renderRouterToStream = async ({ request, router, responseHeaders, children }
 	throw new Error("No renderToReadableStream or renderToPipeableStream found in react-dom/server. Ensure you are using a version of react-dom that supports streaming.");
 };
 //#endregion
-export { rootRouteId as A, resolveManifestAssetLink as C, isResolvedRedirect as D, isRedirect as E, Navigate as F, useNavigate as I, useRouter as L, createLRUCache as M, invariant as N, parseRedirect as O, decodePath as P, getStylesheetHref as S, executeRewriteInput as T, GLOBAL_TSR as _, replaceSsrResponse as a, createInlineCssStyleAsset as b, HeadContent as c, createRouter as d, Outlet as f, Link as g, createRootRouteWithContext as h, normalizeSsrResponse as i, isNotFound as j, redirect as k, useLocation as l, createFileRoute as m, defineHandlerCallback as n, stripSsrResponseBody as o, lazyRouteComponent as p, isSsrResponse as r, Scripts as s, renderRouterToStream as t, RouterProvider as u, TSR_SCRIPT_BARRIER_ID as v, resolveManifestCssLink as w, getScriptPreloadAttrs as x, createInlineCssPlaceholderAsset as y };
+export { isResolvedRedirect as A, createInlineCssStyleAsset as C, resolveManifestCssLink as D, resolveManifestAssetLink as E, createLRUCache as F, invariant as I, decodePath as L, redirect as M, rootRouteId as N, executeRewriteInput as O, isNotFound as P, createInlineCssPlaceholderAsset as S, getStylesheetHref as T, Navigate as _, replaceSsrResponse as a, GLOBAL_TSR as b, HeadContent as c, createRouter as d, Outlet as f, Link as g, createRootRouteWithContext as h, normalizeSsrResponse as i, parseRedirect as j, isRedirect as k, useLocation as l, createFileRoute as m, defineHandlerCallback as n, stripSsrResponseBody as o, lazyRouteComponent as p, isSsrResponse as r, Scripts as s, renderRouterToStream as t, RouterProvider as u, useNavigate as v, getScriptPreloadAttrs as w, TSR_SCRIPT_BARRIER_ID as x, useRouter as y };

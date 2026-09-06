@@ -5,7 +5,7 @@ import { useActiveTenant } from "./use-tenant";
 
 export function useBranding() {
   const { activeId, membership } = useActiveTenant();
-  const lastAppliedNameRef = useRef("VCONNECT");
+  const lastAppliedNameRef = useRef("CONVEXA");
 
   // Fetch global branding info for any authenticated user
   const { data: branding, isLoading } = useQuery({
@@ -74,10 +74,10 @@ export function useBranding() {
     }
   }, [branding, isWhiteLabelEnabled]);
 
-  // Update document title dynamically to replace "VCONNECT" with the company name
+  // Update document title dynamically to replace "CONVEXA" with the company name
   useEffect(() => {
      const targetName =
-       isWhiteLabelEnabled && branding?.company_name ? branding.company_name : "VCONNECT";
+       isWhiteLabelEnabled && branding?.company_name ? branding.company_name : "CONVEXA";
      const lastName = lastAppliedNameRef.current;
  
      const updateTitle = () => {
@@ -88,9 +88,9 @@ export function useBranding() {
        if (lastName !== targetName && currentTitle.includes(lastName)) {
          newTitle = currentTitle.replace(new RegExp(lastName, "g"), targetName);
        }
-       // Fallback: if it contains "VCONNECT" (e.g. router navigation updated it)
-       else if (currentTitle.includes("VCONNECT")) {
-         newTitle = currentTitle.replace(/VCONNECT/g, targetName);
+       // Fallback: if it contains "CONVEXA" (e.g. router navigation updated it)
+       else if (currentTitle.includes("CONVEXA")) {
+         newTitle = currentTitle.replace(/CONVEXA/g, targetName);
        }
  
        if (newTitle !== currentTitle) {
@@ -108,8 +108,8 @@ export function useBranding() {
      const observer = new MutationObserver(() => {
        const currentTitle = document.title;
        const currentTarget = lastAppliedNameRef.current;
-       if (currentTitle.includes("VCONNECT")) {
-         const newTitle = currentTitle.replace(/VCONNECT/g, currentTarget);
+       if (currentTitle.includes("CONVEXA")) {
+         const newTitle = currentTitle.replace(/CONVEXA/g, currentTarget);
          if (newTitle !== currentTitle) {
            document.title = newTitle;
          }
@@ -149,6 +149,6 @@ export function useBranding() {
  function resetFavicon() {
    const link: HTMLLinkElement | null = document.querySelector("link[rel~='icon']");
    if (link) {
-     link.href = "/favicon.ico?v=vconnect";
+     link.href = "/favicon.ico?v=convexa";
    }
  }

@@ -7,8 +7,8 @@ const ENV_SEARCH_PATHS = [
   path.resolve(process.cwd(), ".env"),
   path.resolve(process.cwd(), "../.env"),
   path.resolve(process.cwd(), "../../.env"),
-  "/home/u152968057/domains/vconnect.virratglobal.com/nodejs/.env",
-  "/home/u152968057/domains/vconnect.virratglobal.com/.env",
+  "/home/u152968057/domains/convexa.virratglobal.com/nodejs/.env",
+  "/home/u152968057/domains/convexa.virratglobal.com/.env",
 ];
 
 function loadEnvFile(filePath: string): boolean {

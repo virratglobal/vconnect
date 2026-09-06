@@ -657,7 +657,7 @@ export const Route = createFileRoute("/api/public/hooks/process-campaigns")({
           if (nextPending && nextPending.length > 0) {
             const origin =
               process.env.PUBLIC_BASE_URL ??
-              "https://vconnect.virratglobal.com";
+              "https://convexa.virratglobal.com";
             void fetch(`${origin}/api/public/hooks/process-campaigns`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },

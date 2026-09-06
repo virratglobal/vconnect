@@ -285,7 +285,8 @@ var FunctionsClient = class {
 					url.searchParams.set("forceFunctionRegion", region);
 				}
 				let body;
-				if (functionArgs && (headers && !Object.prototype.hasOwnProperty.call(headers, "Content-Type") || !headers)) if (typeof Blob !== "undefined" && functionArgs instanceof Blob || functionArgs instanceof ArrayBuffer) {
+				const hasContentTypeHeader = !!headers && Object.keys(headers).some((key) => key.toLowerCase() === "content-type");
+				if (functionArgs && !hasContentTypeHeader) if (typeof Blob !== "undefined" && functionArgs instanceof Blob || functionArgs instanceof ArrayBuffer) {
 					_headers["Content-Type"] = "application/octet-stream";
 					body = functionArgs;
 				} else if (typeof functionArgs === "string") {

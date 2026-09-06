@@ -4,7 +4,7 @@ import { t as RealtimeClient } from "./supabase__realtime-js.mjs";
 import { t as StorageClient } from "./@supabase/storage-js+[...].mjs";
 import { t as AuthClient } from "./supabase__auth-js.mjs";
 //#region node_modules/@supabase/supabase-js/dist/index.mjs
-var version = "2.108.2";
+var version = "2.109.0";
 var JS_ENV = "";
 var JS_RUNTIME_VERSION;
 if (typeof Deno !== "undefined") {
